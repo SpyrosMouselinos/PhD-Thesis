@@ -9,9 +9,11 @@
 \usepackage[backend=bibtex,style=numeric,maxbibnames=99]{biblatex}
 \addbibresource{bibliography/references.bib}
 
-\title{PhD slides}
-\author{}
-\date{\today}
+\title{Measuring and Enhancing Reasoning in AI Systems}
+\subtitle{From Visual Question Answering to Multi-Agent Geometric Problem Solving}
+\author{Spyridon Mouselinos}
+\institute{[Your Institution]}
+\date{[Defense Date]}
 
 \begin{document}
 
@@ -21,24 +23,14 @@
   \tableofcontents
 \end{frame}
 
-% --- Chapters (one file per chapter under tex/) ---
-\input{tex/chapter01}
-\input{tex/chapter02}
-\input{tex/chapter03}
-\input{tex/chapter04}
-\input{tex/chapter05}
-\input{tex/chapter06}
-\input{tex/chapter07}
-\input{tex/chapter08}
-\input{tex/chapter09}
-\input{tex/chapter10}
+% --- Chapters (5 thesis sections) ---
+\input{tex/chapter01}  % Introduction (Slides 1-3)
+\input{tex/chapter02}  % Visual Domain (Slides 4-8)
+\input{tex/chapter03}  % Code Generation (Slides 9-13)
+\input{tex/chapter04}  % Geometric Reasoning (Slides 14-18)
+\input{tex/chapter05}  % Conclusions (Slides 19-20)
 
 % --- Bibliography (after all chapters) ---
-\begin{frame}{Bibliography}
-  Example citations you can use in any chapter: \cite{dummy2024}, \cite{demo2023}.\\
-  Add entries in \texttt{bibliography/references.bib} and use \texttt{\textbackslash cite\{key\}} on slides.
-\end{frame}
-
 \begin{frame}[allowframebreaks]{References}
   \printbibliography[heading=none]
 \end{frame}
