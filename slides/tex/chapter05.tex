@@ -1,5 +1,53 @@
-\section{Methods (part 2)}
+\section{Conclusions and Future Directions}
 
-\begin{frame}{Chapter 5 — Methods (part 2)}
-  Second part of your methodology (e.g.\ algorithms, models, evaluation protocol).
+% Slide 19: Conclusions and Future Directions
+\begin{frame}{Conclusions and Future Directions}
+  \begin{block}{Core Contributions}
+    \begin{itemize}
+      \item Measure reasoning behaviorally
+      \item Expose shortcut dependence semantically
+      \item Improve reasoning through structure
+    \end{itemize}
+  \end{block}
+
+  \vspace{1em}
+
+  \begin{block}{Future Directions}
+    \begin{itemize}
+      \item Adversarial testing + pretraining/post-training
+      \item Collaborative multi-agent frameworks
+      \item Continual learning
+    \end{itemize}
+  \end{block}
+  \note{This is the dissertation-level synthesis. Across vision, code, and geometry, the same pattern appears: models often perform well until semantically small, human-irrelevant changes expose hidden shortcut dependence. The contribution of the thesis is therefore threefold: a testing philosophy, a cross-domain failure analysis, and a constructive answer — stronger structure through better training, prompting, and multi-agent collaboration. The future directions point toward integrating adversarial testing with both pretraining and post-training, developing more sophisticated collaborative multi-agent frameworks, and exploring continual learning to maintain reasoning robustness over time.}
+\end{frame}
+
+% Slide 20: Recent Developments Reinforcing These Contributions
+\begin{frame}{Recent Developments Reinforcing These Contributions}
+  \textbf{AI Reasoning Agents}
+  \begin{itemize}
+    \item Reasoning-focused models (o1, Gemini 2.5)
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \textbf{Vision-Language Model Reasoning}
+  \begin{itemize}
+    \item Native multimodality (GPT-4o, Gemini)
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \textbf{Virtual Tokens for Thought Processes}
+  \begin{itemize}
+    \item Internal deliberation mechanisms
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \begin{small}
+  Contemporary examples: world models (Genie 3), agent frameworks (Anthropic Research, OpenAI Agents SDK)
+  \end{small}
+
+  \note{I would end with the thesis's own final point: the directions explored here — stronger reasoning agents, better vision-language reasoning, and more explicit internal deliberation — did not remain marginal. They became increasingly central. Reinforcement-learning-based reasoning is central in OpenAI's o1. Unified multimodality is now native in systems like GPT-4o and Gemini. Multi-agent orchestration is no longer speculative: Anthropic and OpenAI now ship production tooling for agent workflows. World models like Genie 3 are exploring predictive reasoning through simulation. So this dissertation was not three disconnected papers. It was an early research program around how to test reasoning more honestly and how to push it further once we find its limits.}
 \end{frame}
