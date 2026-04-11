@@ -1,12 +1,74 @@
-\section{Background}
+\section{Testing Reasoning in the Visual Domain}
 
-\begin{frame}[fragile]{Chapter 2 — Background}
-  Put notation, prior work overview, or theory here.\\
-  Figures live in \texttt{assets/}; use \verb|\includegraphics{file}|.
+% Slide 4: Testing Reasoning in the Visual Domain
+\begin{frame}{Testing Reasoning in the Visual Domain}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Visual question answering as a proxy for reasoning
+      \item CLEVR reduced many trivial dataset biases
+      \item CLEVR looked close to solved
+      \item Question: did they really learn reasoning?
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{assets/clevr-scene-example}
+  \end{columns}
+  \note{I begin with vision because CLEVR was designed exactly for this kind of question. It is a controlled benchmark for compositional visual reasoning, and by the time of this work, several models looked close to solving it. So the natural next question was: are they actually reasoning, or are they still leaning on hidden shortcuts?}
 \end{frame}
 
-\begin{frame}{Example figure}
+% Slide 5: A Two-Player Black-Box Test for VQA
+\begin{frame}{A Two-Player Black-Box Test for VQA}
+  \begin{itemize}
+    \item Visual-QA Player answers the question
+    \item Adversarial Player reconfigures the scene
+    \item Enforcers keep the scene valid and answer-preserving
+    \item If the answer changes, reasoning failed
+  \end{itemize}
   \begin{center}
-    \includegraphics[width=0.35\linewidth]{placeholder.png}
+    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-2-1-two-player-game}
   \end{center}
+  \note{The setup is a zero-sum game. One player is the model under test. The other is an adversarial scene manipulator. Crucially, the manipulator does not get gradients or model internals. It only changes the scene in ways that remain valid for the same question and answer. So this is not a pixel attack. It is a semantic black-box test of whether the model's reasoning is invariant under equivalent scene reconfigurations.}
+\end{frame}
+
+% Slide 6: Visual Chapter — Benchmark Success Is Not Robust Reasoning
+\begin{frame}{Visual Chapter: Benchmark Success Is Not Robust Reasoning}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Strong CLEVR models still broke
+      \item The drops were often large
+      \item Harder questions were more fragile
+      \item Especially counting / existence / relational cases
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{assets/iclr-table-2-cropped}
+  \end{columns}
+  \note{This is the quantitative punchline. Models that looked almost solved on CLEVR collapsed badly by small, semantically valid changes. FiLM drops from 96.2 to 48.0, RN from 93.2 to 47.0, and even MDetr, which was nearly perfect originally, drops to 60.0 in the hardest cases. The main point is simple: strong benchmark accuracy did not imply robust reasoning.}
+\end{frame}
+
+% Slide 7: Visual Chapter — Qualitative Failures
+\begin{frame}{Visual Chapter: Qualitative Failures}
+  \begin{itemize}
+    \item Changes are small
+    \item Changes are valid
+    \item Humans usually see no reason the answer should change
+    \item Yet the model flips its answer
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-2-2-visual-failures}
+  \end{center}
+  \note{This is where the result becomes intuitive. The manipulations are not bizarre. They are small and semantically harmless. A human typically sees no reason the answer should change, but the model changes it anyway. In some cases, perception still looks fine, which suggests the failure is not only visual recognition. It is also a reasoning failure over the recognized content.}
+\end{frame}
+
+% Slide 8: What the Visual Chapter Taught Me
+\begin{frame}{What the Visual Chapter Taught Me}
+  \begin{itemize}
+    \item High accuracy is not enough
+    \item Brute-force retraining helps only marginally
+    \item Reasoning difficulty matters more than raw scene variation
+    \item This motivates transferring the same test philosophy to language
+  \end{itemize}
+  \note{The visual chapter gave me the first thesis-level lesson: benchmark success is not proof of reasoning. It also showed that just adding more adversarially manipulated data is not a full solution. That led directly to the next question: if this pathology is real, does it also appear in language-based reasoning tasks like code generation?}
 \end{frame}
