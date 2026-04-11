@@ -26,7 +26,7 @@
     \item If the answer changes, reasoning failed
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-2-1-two-player-game}
+    \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-2-1-two-player-game}
   \end{center}
   \note{The setup is a zero-sum game. One player is the model under test. The other is an adversarial scene manipulator. Crucially, the manipulator does not get gradients or model internals. It only changes the scene in ways that remain valid for the same question and answer. So this is not a pixel attack. It is a semantic black-box test of whether the model's reasoning is invariant under equivalent scene reconfigurations.}
 \end{frame}
@@ -57,7 +57,7 @@
     \item Yet the model flips its answer
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-2-2-visual-failures}
+    \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-2-2-visual-failures}
   \end{center}
   \note{This is where the result becomes intuitive. The manipulations are not bizarre. They are small and semantically harmless. A human typically sees no reason the answer should change, but the model changes it anyway. In some cases, perception still looks fine, which suggests the failure is not only visual recognition. It is also a reasoning failure over the recognized content.}
 \end{frame}

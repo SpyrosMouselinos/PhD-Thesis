@@ -9,7 +9,7 @@
     \item So I test prompt semantics the way I tested scene semantics
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.6\textwidth]{assets/code-prompt-example}
+    \includegraphics[width=0.75\textwidth,height=0.45\textheight,keepaspectratio]{assets/code-prompt-example}
   \end{center}
   \note{Chapter 3 is the language-domain continuation of the same idea. In vision, the shortcut can live in the scene. In code generation, the shortcut often lives in the prompt itself. Function names, task wording, and examples can all act as hidden hints. So I apply the same black-box semantic testing logic, but now to structured prompts instead of structured scenes.}
 \end{frame}
@@ -57,7 +57,7 @@
     \item But the logic is wrong
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-3-2-code-failures}
+    \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-3-2-code-failures}
   \end{center}
   \note{These qualitative examples are very revealing. The model still produces code that looks intelligent and relevant. It may still compare numbers, iterate, or use the right operators. But it fails to compose those pieces into the correct algorithm. So the failure is not total ignorance. It is shallow reasoning hidden behind plausible code.}
 \end{frame}
