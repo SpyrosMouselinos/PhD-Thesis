@@ -127,10 +127,12 @@ Create side-by-side cropped version:
 
 - [ ] **Step 12: Extract Euclidea problem screenshot**
 
-From Geometry_EMNLP_2024.pdf:
+From Geometry_EMNLP_2024.pdf (NOT Thesis Figure 4.1):
 
 ```bash
 # Save as: slides/assets/euclidea-problem-screenshot.png
+# Note: Use a clean starting-state screenshot from the geometry paper appendix
+# Thesis Fig 4.1 is the multi-agent architecture diagram, used on Slide 16
 ```
 
 - [ ] **Step 13: Extract Thesis Figure 4.2 (Baseline ablations)**
@@ -340,11 +342,15 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 \end{frame}
 ```
 
-- [ ] **Step 3: Write Slide 3 (Testing Philosophy)**
+- [ ] **Step 3: Write Slide 3 (Central Research Question)**
 
 ```latex
-% Slide 3: How This Thesis Tests Reasoning
-\begin{frame}{How This Thesis Tests Reasoning}
+% Slide 3: Central Research Question and How This Thesis Tests It
+\begin{frame}{Central Research Question and How This Thesis Tests It}
+  \textbf{How can AI systems progress beyond pattern recognition to cultivate strong reasoning capabilities across multiple domains with diverse contexts and modalities?}
+
+  \vspace{1em}
+
   \begin{columns}
     \column{0.55\textwidth}
     \begin{itemize}
@@ -357,7 +363,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
     \column{0.45\textwidth}
     \includegraphics[width=\textwidth]{assets/thesis-fig-1-8-adversarial-testing}
   \end{columns}
-  \note{The methodological core of the thesis is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods.}
+  \note{This is the central research question of the dissertation. The methodological core of my answer is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods.}
 \end{frame}
 ```
 
@@ -410,7 +416,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
     \begin{itemize}
       \item Visual question answering as a proxy for reasoning
       \item CLEVR reduced many trivial dataset biases
-      \item Some models reached near-perfect scores
+      \item CLEVR looked close to solved
       \item Question: did they really learn reasoning?
     \end{itemize}
 
@@ -607,6 +613,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 - [ ] **Step 5: Write Slide 13 (Mitigation + Synthesis)**
 
+**WARNING**: Two tables may be too dense. Consider using only Table 5 (fine-tuning results) and referencing Table 4 verbally.
+
 ```latex
 % Slide 13: What Helped in Code Generation
 \begin{frame}{What Helped in Code Generation}
@@ -620,7 +628,10 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
     \end{itemize}
 
     \column{0.5\textwidth}
+    % Option 1: Show both tables side by side (may be dense)
     \includegraphics[width=\textwidth]{assets/acl-tables-4-5-cropped}
+    % Option 2: Show only Table 5 (fine-tuning results), reference Table 4 in notes
+    % \includegraphics[width=\textwidth]{assets/acl-table-5-cropped}
   \end{columns}
   \note{I did not want this chapter to end only with diagnosis. So I used the perturbations as training augmentations. That helped, especially for larger models, and longer descriptions also improved resilience in some cases. But the gains were partial. The main conclusion stayed the same: data augmentation helps, but it does not fully remove the underlying shortcut dependence. This also serves as the cross-domain synthesis point. We now have the same pattern appearing in two completely different modalities. In vision, the shortcuts were spatial and configurational. In code, they are lexical and structural. But the underlying pathology is identical: models retreat to the easiest available signal when reasoning becomes hard.}
 \end{frame}
@@ -736,18 +747,20 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
     \end{itemize}
 
     \column{0.5\textwidth}
-    \includegraphics[width=0.48\textwidth]{assets/thesis-fig-4-3-vrp}
-    \includegraphics[width=0.48\textwidth]{assets/thesis-fig-4-4-naming-bias}
+    % Prioritize Fig 4.4 (naming bias) - more memorable to live audience
+    \includegraphics[width=\textwidth]{assets/thesis-fig-4-4-naming-bias}
+    % Optional: Include Fig 4.3 (VRP) as smaller inset if space allows
+    % \includegraphics[width=0.4\textwidth]{assets/thesis-fig-4-3-vrp}
   \end{columns}
   \note{I found two more very specific failure modes. First, even multimodal models could recognize scene elements but still fail to integrate them into a valid construction plan. The Visual Relations Prompt fixes that by turning the image into explicit relations in language. Second, alphabetical naming created a bias: target labels like C, D, or E could distort the reasoning path. Replacing the target with X often restored shorter, cleaner solutions.}
 \end{frame}
 ```
 
-- [ ] **Step 5: Write Slide 18 (Results + Implicit Synthesis)**
+- [ ] **Step 5: Write Slide 18 (What the Geometry Chapter Taught Me)**
 
 ```latex
-% Slide 18: Geometry Chapter — Results and Broader Implications
-\begin{frame}{Geometry Chapter: Results and Broader Implications}
+% Slide 18: What the Geometry Chapter Taught Me
+\begin{frame}{What the Geometry Chapter Taught Me}
   \begin{itemize}
     \item Multi-agent structure beats single prompting
     \item Role and domain specialization matter
@@ -757,7 +770,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
   \begin{center}
     \includegraphics[width=0.7\textwidth]{assets/emnlp-table-1-cropped}
   \end{center}
-  \note{This slide is the culmination of the thesis. The gains are large, and the ablations explain why: domain separation, validators, VRP, and naming neutralization all contribute. Importantly, the framework is not just a geometry trick. By swapping tools, it also transfers to GSM8K, SVAMP, and MATH-style reasoning tasks. So the broader lesson is that structure and collaboration can extend the reasoning limits of general-purpose models. This serves as the implicit synthesis for the geometry chapter: structure matters as much as scale, and multi-agent specialization is a constructive answer to the limitations exposed in the earlier chapters.}
+  \note{This slide is the culmination of the thesis. The gains are large, and the ablations explain why: domain separation, validators, VRP, and naming neutralization all contribute. Importantly, the framework is not just a geometry trick. By swapping tools, it also transfers to GSM8K, SVAMP, and MATH-style reasoning tasks. The broader lesson is that structure and collaboration can extend the reasoning limits of general-purpose models. This serves as the explicit synthesis for the geometry chapter: structure matters as much as scale, and multi-agent specialization is a constructive answer to the limitations exposed in the earlier chapters. The claim that it 'transfers beyond geometry' is supported by the generalization results table showing performance on algebraic reasoning tasks.}
 \end{frame}
 ```
 
@@ -812,12 +825,12 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
   \begin{block}{Future Directions}
     \begin{itemize}
-      \item Adversarial testing + post-training
-      \item Collaborative multi-agent systems
+      \item Adversarial testing + pretraining/post-training
+      \item Collaborative multi-agent frameworks
       \item Continual learning
     \end{itemize}
   \end{block}
-  \note{This is the dissertation-level synthesis. Across vision, code, and geometry, the same pattern appears: models often perform well until semantically small, human-irrelevant changes expose hidden shortcut dependence. The contribution of the thesis is therefore threefold: a testing philosophy, a cross-domain failure analysis, and a constructive answer — stronger structure through better training, prompting, and multi-agent collaboration.}
+  \note{This is the dissertation-level synthesis. Across vision, code, and geometry, the same pattern appears: models often perform well until semantically small, human-irrelevant changes expose hidden shortcut dependence. The contribution of the thesis is therefore threefold: a testing philosophy, a cross-domain failure analysis, and a constructive answer — stronger structure through better training, prompting, and multi-agent collaboration. The future directions point toward integrating adversarial testing with both pretraining and post-training, developing more sophisticated collaborative multi-agent frameworks, and exploring continual learning to maintain reasoning robustness over time.}
 \end{frame}
 ```
 
@@ -826,31 +839,32 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 ```latex
 % Slide 20: Recent Developments Reinforcing These Contributions
 \begin{frame}{Recent Developments Reinforcing These Contributions}
-  \begin{columns}[t]
-    \column{0.5\textwidth}
-    \textbf{Reasoning models}
-    \begin{itemize}
-      \item o1, Gemini 2.5
-    \end{itemize}
-    \vspace{0.5em}
-    \textbf{Native multimodality}
-    \begin{itemize}
-      \item GPT-4o, Gemini
-    \end{itemize}
+  \textbf{AI Reasoning Agents}
+  \begin{itemize}
+    \item Reasoning-focused models (o1, Gemini 2.5)
+  \end{itemize}
 
-    \column{0.5\textwidth}
-    \textbf{World models}
-    \begin{itemize}
-      \item Genie 3
-    \end{itemize}
-    \vspace{0.5em}
-    \textbf{Agents / agent teams}
-    \begin{itemize}
-      \item Anthropic Research
-      \item OpenAI Agents SDK
-    \end{itemize}
-  \end{columns}
-  \note{I would end with the thesis's own final point: the directions explored here — stronger reasoning agents, better vision-language reasoning, and more explicit internal deliberation — did not remain marginal. They became increasingly central. Reinforcement-learning-based reasoning is central in OpenAI's o1. Unified multimodality is now native in systems like GPT-4o and Gemini. Multi-agent orchestration is no longer speculative: Anthropic and OpenAI now ship production tooling for agent workflows. So this dissertation was not three disconnected papers. It was an early research program around how to test reasoning more honestly and how to push it further once we find its limits.}
+  \vspace{0.5em}
+
+  \textbf{Vision-Language Model Reasoning}
+  \begin{itemize}
+    \item Native multimodality (GPT-4o, Gemini)
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \textbf{Virtual Tokens for Thought Processes}
+  \begin{itemize}
+    \item Internal deliberation mechanisms
+  \end{itemize}
+
+  \vspace{0.5em}
+
+  \begin{small}
+  Contemporary examples: world models (Genie 3), agent frameworks (Anthropic Research, OpenAI Agents SDK)
+  \end{small}
+
+  \note{I would end with the thesis's own final point: the directions explored here — stronger reasoning agents, better vision-language reasoning, and more explicit internal deliberation — did not remain marginal. They became increasingly central. Reinforcement-learning-based reasoning is central in OpenAI's o1. Unified multimodality is now native in systems like GPT-4o and Gemini. Multi-agent orchestration is no longer speculative: Anthropic and OpenAI now ship production tooling for agent workflows. World models like Genie 3 are exploring predictive reasoning through simulation. So this dissertation was not three disconnected papers. It was an early research program around how to test reasoning more honestly and how to push it further once we find its limits.}
 \end{frame}
 ```
 
