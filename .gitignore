@@ -13,6 +13,9 @@
 *.synctex.gz
 *.toc
 *.vrb
+*.bcf
+*.run.xml
+*-blx.bib
 slides/out/
 
 # Editor / tooling (local)

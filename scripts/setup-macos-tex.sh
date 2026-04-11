@@ -20,6 +20,7 @@ fi
 
 echo "Updating tlmgr and installing Beamer tooling (sudo password again)..."
 sudo tlmgr update --self
-sudo tlmgr install latexmk beamer collection-fontsrecommended collection-latexextra
+sudo tlmgr install latexmk beamer biblatex collection-bibtexextra collection-fontsrecommended collection-latexextra
 
 echo "Done. Verify with: /Library/TeX/texbin/pdflatex --version"
+echo "Optional: for biber instead of BibTeX, run: sudo tlmgr install biber"

@@ -2,6 +2,13 @@
 \usetheme{Madrid}
 \usecolortheme{default}
 
+\usepackage{graphicx}
+\graphicspath{{assets/}{./assets/}{./}}
+
+% Bibliography: .bib files listed here; slides at the end of this file print the reference list.
+\usepackage[backend=bibtex,style=numeric,maxbibnames=99]{biblatex}
+\addbibresource{bibliography/references.bib}
+
 \title{PhD slides}
 \author{}
 \date{\today}
@@ -10,8 +17,30 @@
 
 \frame{\titlepage}
 
-\begin{frame}{First slide}
-  Edit \texttt{slides/main.tex}  
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% --- Chapters (one file per chapter under tex/) ---
+\input{tex/chapter01}
+\input{tex/chapter02}
+\input{tex/chapter03}
+\input{tex/chapter04}
+\input{tex/chapter05}
+\input{tex/chapter06}
+\input{tex/chapter07}
+\input{tex/chapter08}
+\input{tex/chapter09}
+\input{tex/chapter10}
+
+% --- Bibliography (after all chapters) ---
+\begin{frame}{Bibliography}
+  Example citations you can use in any chapter: \cite{dummy2024}, \cite{demo2023}.\\
+  Add entries in \texttt{bibliography/references.bib} and use \texttt{\textbackslash cite\{key\}} on slides.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+  \printbibliography[heading=none]
 \end{frame}
 
 \end{document}
