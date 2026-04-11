@@ -1,6 +1,6 @@
 \section{Exposing and Mitigating Biases in Code Generation}
 
-% Slide 9: Exposing and Mitigating Biases in Code Generation
+% Slide 10: Exposing and Mitigating Biases in Code Generation
 \begin{frame}{Exposing and Mitigating Biases in Code Generation}
   \begin{itemize}
     \item Same question, new modality
@@ -9,15 +9,17 @@
     \item So I test prompt semantics the way I tested scene semantics
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.75\textwidth,height=0.45\textheight,keepaspectratio]{assets/code-prompt-example}
+    \includegraphics[width=0.8\textwidth,height=0.5\textheight,keepaspectratio]{assets/code-prompt-example}
+    \vspace{-0.3em}
+    {\tiny Source: Code prompt example (ACL 2023)}
   \end{center}
   \note{Chapter 3 is the language-domain continuation of the same idea. In vision, the shortcut can live in the scene. In code generation, the shortcut often lives in the prompt itself. Function names, task wording, and examples can all act as hidden hints. So I apply the same black-box semantic testing logic, but now to structured prompts instead of structured scenes.}
 \end{frame}
 
-% Slide 10: Blocks of Influence
+% Slide 11: Blocks of Influence
 \begin{frame}{Blocks of Influence}
   \begin{columns}
-    \column{0.5\textwidth}
+    \column{0.48\textwidth}
     \begin{itemize}
       \item Name Block $\rightarrow$ memorization
       \item Description Block $\rightarrow$ lexical cue dependence
@@ -25,8 +27,10 @@
       \item Perturb the blocks while preserving global task meaning
     \end{itemize}
 
-    \column{0.5\textwidth}
-    \includegraphics[width=\textwidth]{assets/thesis-fig-3-1-blocks-of-influence}
+    \column{0.52\textwidth}
+    \includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{assets/thesis-fig-3-1-blocks-of-influence}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 3.1 / ACL 2023 Fig. 1}
   \end{columns}
   \note{This is the central abstraction of the code paper. I decompose the prompt into three Blocks of Influence. If renaming the function breaks performance, that suggests memorization. If removing a few keywords breaks it, that suggests lexical dependence. If removing examples breaks it, then the examples were doing reasoning work for the model. The important point is the task remains human-solvable after these transformations.}
 \end{frame}
@@ -44,6 +48,8 @@
 
     \column{0.5\textwidth}
     \includegraphics[width=\textwidth]{assets/acl-table-3-cropped}
+    \vspace{-0.3em}
+    {\tiny Source: ACL 2023 Table 3 (cropped)}
   \end{columns}
   \note{The pattern is the same as in vision. Small semantic interventions can produce large drops. If I remove function-name hints, I expose memorization. If I remove selected keywords, I expose lexical bias. If I remove examples, I expose shallow compositional reasoning. And when I combine those transformations, the drops become much larger — around 40 percent in the hardest setting.}
 \end{frame}
@@ -58,6 +64,8 @@
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-3-2-code-failures}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 3.2 (code failure examples)}
   \end{center}
   \note{These qualitative examples are very revealing. The model still produces code that looks intelligent and relevant. It may still compare numbers, iterate, or use the right operators. But it fails to compose those pieces into the correct algorithm. So the failure is not total ignorance. It is shallow reasoning hidden behind plausible code.}
 \end{frame}
@@ -76,6 +84,8 @@
     \column{0.5\textwidth}
     % Option 1: Show both tables side by side (may be dense)
     \includegraphics[width=\textwidth]{assets/acl-tables-4-5-cropped}
+    \vspace{-0.3em}
+    {\tiny Source: ACL 2023 Tables 4-5 (mitigation results)}
     % Option 2: Show only Table 5 (fine-tuning results), reference Table 4 in notes
     % \includegraphics[width=\textwidth]{assets/acl-table-5-cropped}
   \end{columns}

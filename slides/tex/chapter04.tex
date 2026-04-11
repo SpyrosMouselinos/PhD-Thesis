@@ -17,6 +17,8 @@
     \column{0.52\textwidth}
     \centering
     \includegraphics[height=0.7\textheight,keepaspectratio]{assets/euclidea-problem-screenshot}
+    \vspace{-0.3em}
+    {\tiny Source: Euclidea game screenshot}
   \end{columns}
   \note{Geometry is the culmination of the dissertation. It is not just another benchmark. It combines visual understanding, symbolic reasoning, sequential planning, and tool use in one open-ended task. Models that look strong in algebra or text often struggle here, because constructive geometry is a much stricter test of reasoning.}
 \end{frame}
@@ -31,6 +33,8 @@
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-4-2-baselines}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 4.2 (baseline prompting results)}
   \end{center}
   \note{I first studied what goes wrong before building the full system. Zero-shot prompting often hallucinated tool behavior. Static few-shot reduced that, but it introduced another problem: the model copied the style and even the reasoning path of the prompt examples. Adaptive few-shot helped by retrieving more relevant demonstrations. In the ablations, ChatGPT improves from 5.9 zero-shot to 13.6 with Adaptive-Shot Self on Alpha and Beta levels.}
 \end{frame}
@@ -45,6 +49,8 @@
   \end{itemize}
   \begin{center}
     \includegraphics[height=0.55\textheight,keepaspectratio]{assets/thesis-fig-4-1-multi-agent-arch}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 4.1 (multi-agent architecture)}
   \end{center}
   \note{This is the conceptual heart of the geometry chapter. I stop treating the model as one monolithic reasoner and instead organize the reasoning process. One agent plans in natural language, another translates that plan into geometric tool steps, and validators criticize both levels. The key idea is that reasoning improves when we structure it — not only when we scale the model.}
 \end{frame}
@@ -63,6 +69,8 @@
     \column{0.5\textwidth}
     % Prioritize Fig 4.4 (naming bias) - more memorable to live audience
     \includegraphics[width=\textwidth]{assets/thesis-fig-4-4-naming-bias}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 4.4 (naming bias)}
     % Optional: Include Fig 4.3 (VRP) as smaller inset if space allows
     % \includegraphics[width=0.4\textwidth]{assets/thesis-fig-4-3-vrp}
   \end{columns}
@@ -79,6 +87,8 @@
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/emnlp-table-1-cropped}
+    \vspace{-0.3em}
+    {\tiny Source: EMNLP 2024 Table 1 (Euclidea results and transfer)}
   \end{center}
   \note{This slide is the culmination of the thesis. The gains are large, and the ablations explain why: domain separation, validators, VRP, and naming neutralization all contribute. Importantly, the framework is not just a geometry trick. By swapping tools, it also transfers to GSM8K, SVAMP, and MATH-style reasoning tasks. The broader lesson is that structure and collaboration can extend the reasoning limits of general-purpose models. This serves as the explicit synthesis for the geometry chapter: structure matters as much as scale, and multi-agent specialization is a constructive answer to the limitations exposed in the earlier chapters. The claim that it 'transfers beyond geometry' is supported by the generalization results table showing performance on algebraic reasoning tasks.}
 \end{frame}
