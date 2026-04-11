@@ -67,12 +67,15 @@
     \end{itemize}
 
     \column{0.5\textwidth}
-    % Prioritize Fig 4.4 (naming bias) - more memorable to live audience
-    \includegraphics[width=\textwidth]{assets/thesis-fig-4-4-naming-bias}
-    \vspace{-0.3em}
+    \includegraphics[width=\textwidth,height=0.35\textheight,keepaspectratio]{assets/thesis-fig-4-3-vrp-clean}
+    \vspace{-0.2em}
+    {\tiny Source: Thesis Fig. 4.3 (VRP)}
+
+    \vspace{0.3em}
+
+    \includegraphics[width=\textwidth,height=0.35\textheight,keepaspectratio]{assets/thesis-fig-4-4-naming-bias-clean}
+    \vspace{-0.2em}
     {\tiny Source: Thesis Fig. 4.4 (naming bias)}
-    % Optional: Include Fig 4.3 (VRP) as smaller inset if space allows
-    % \includegraphics[width=0.4\textwidth]{assets/thesis-fig-4-3-vrp}
   \end{columns}
   \note{I found two more very specific failure modes. First, even multimodal models could recognize scene elements but still fail to integrate them into a valid construction plan. The Visual Relations Prompt fixes that by turning the image into explicit relations in language. Second, alphabetical naming created a bias: target labels like C, D, or E could distort the reasoning path. Replacing the target with X often restored shorter, cleaner solutions.}
 \end{frame}

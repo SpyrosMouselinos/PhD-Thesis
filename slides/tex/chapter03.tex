@@ -47,9 +47,9 @@
     \end{itemize}
 
     \column{0.5\textwidth}
-    \includegraphics[width=\textwidth]{assets/acl-table-3-cropped}
+    \includegraphics[width=\textwidth]{assets/acl-table-3-tight}
     \vspace{-0.3em}
-    {\tiny Source: ACL 2023 Table 3 (cropped)}
+    {\tiny Source: ACL 2023 Table 3 (3 models, key transformations)}
   \end{columns}
   \note{The pattern is the same as in vision. Small semantic interventions can produce large drops. If I remove function-name hints, I expose memorization. If I remove selected keywords, I expose lexical bias. If I remove examples, I expose shallow compositional reasoning. And when I combine those transformations, the drops become much larger — around 40 percent in the hardest setting.}
 \end{frame}
@@ -63,9 +63,9 @@
     \item But the logic is wrong
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-3-2-code-failures}
+    \includegraphics[width=0.85\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-3-2-code-single-example}
     \vspace{-0.3em}
-    {\tiny Source: Thesis Fig. 3.2 (code failure examples)}
+    {\tiny Source: Thesis Fig. 3.2 (one before/after example)}
   \end{center}
   \note{These qualitative examples are very revealing. The model still produces code that looks intelligent and relevant. It may still compare numbers, iterate, or use the right operators. But it fails to compose those pieces into the correct algorithm. So the failure is not total ignorance. It is shallow reasoning hidden behind plausible code.}
 \end{frame}
