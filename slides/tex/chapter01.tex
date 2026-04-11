@@ -1,5 +1,41 @@
 \section{Introduction}
 
-\begin{frame}{Chapter 1 — Introduction}
-  Replace this frame with your opening material (motivation, problem statement, contributions).
+% Slide 1: Title
+\begin{frame}
+  \titlepage
+  \note{This dissertation studies one question across three domains: when AI systems look strong on benchmarks, are they actually reasoning, or are they exploiting shortcuts? I approach that question through visual reasoning, code generation, and geometric problem-solving, and I argue that the same deeper pattern appears in all three.}
+\end{frame}
+
+% Slide 2: Clever Hans and the Modern AI Paradox
+\begin{frame}{Clever Hans and the Modern AI Paradox}
+  \begin{itemize}
+    \item Success can mask lack of understanding
+    \item Strong benchmark results do not guarantee reasoning
+    \item Small, human-irrelevant changes can still break the system
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-1-1-clever-hans}
+  \end{center}
+  \note{I open with Clever Hans because it is the right metaphor for the entire thesis. Hans looked intelligent, but the performance came from sensitivity to cues, not real understanding. My claim is that many modern AI systems have the same issue: they can look extremely capable in well-structured benchmarks, but fail under subtle changes that should not matter to a human observer.}
+\end{frame}
+
+% Slide 3: Central Research Question and How This Thesis Tests It
+\begin{frame}{Central Research Question and How This Thesis Tests It}
+  \textbf{How can AI systems progress beyond pattern recognition to cultivate strong reasoning capabilities across multiple domains with diverse contexts and modalities?}
+
+  \vspace{1em}
+
+  \begin{columns}
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item Behavioral evaluation
+      \item Semantically meaningful perturbations
+      \item Black-box applicability
+      \item Roadmap: vision $\rightarrow$ code $\rightarrow$ geometry
+    \end{itemize}
+
+    \column{0.45\textwidth}
+    \includegraphics[width=\textwidth]{assets/thesis-fig-1-8-adversarial-testing}
+  \end{columns}
+  \note{This is the central research question of the dissertation. The methodological core of my answer is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods.}
 \end{frame}
