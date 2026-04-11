@@ -75,20 +75,22 @@ This specification defines a 20-slide presentation that gives each of the three 
 
 ---
 
-#### Slide 3: How This Thesis Tests Reasoning
+#### Slide 3: Central Research Question and How This Thesis Tests It
 
 **On Slide**:
-- Behavioral evaluation
-- Semantically meaningful perturbations
-- Black-box applicability
-- Roadmap: vision → code → geometry
+- **Bold at top**: "How can AI systems progress beyond pattern recognition to cultivate strong reasoning capabilities across multiple domains with diverse contexts and modalities?"
+- Then four bullets:
+  - Behavioral evaluation
+  - Semantically meaningful perturbations
+  - Black-box applicability
+  - Roadmap: vision → code → geometry
 
 **Visual**:
 - **Thesis Figure 1.8** on the right
 - Small 3-step roadmap on the left
 
 **Speaker Notes** (80 seconds):
-"The methodological core of the thesis is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods."
+"This is the central research question of the dissertation. The methodological core of my answer is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods."
 
 **Source**: Thesis Chapter 1
 
@@ -101,7 +103,7 @@ This specification defines a 20-slide presentation that gives each of the three 
 **On Slide**:
 - Visual question answering as a proxy for reasoning
 - CLEVR reduced many trivial dataset biases
-- Some models reached near-perfect scores
+- CLEVR looked close to solved — some models reached near-perfect scores
 - Question: did they really learn reasoning?
 
 **Visual**:
@@ -319,9 +321,10 @@ This also serves as the cross-domain synthesis point. We now have the same patte
 - It is where the earlier problems meet
 
 **Visual**:
-- Use a Euclidea problem screenshot
+- Use a Euclidea problem screenshot (NOT Thesis Figure 4.1)
 - Best choice: a clean starting-state screenshot from the geometry paper appendix / human study figure
-- Alternative: **Thesis Figure 4.1** small with a Euclidea crop beside it
+- Crop from EMNLP paper or thesis Chapter 4 opening
+- **Note**: Thesis Fig. 4.1 is the multi-agent architecture diagram, used on Slide 16
 
 **Speaker Notes** (80 seconds):
 "Geometry is the culmination of the dissertation. It is not just another benchmark. It combines visual understanding, symbolic reasoning, sequential planning, and tool use in one open-ended task. Models that look strong in algebra or text often struggle here, because constructive geometry is a much stricter test of reasoning."
@@ -375,8 +378,9 @@ This also serves as the cross-domain synthesis point. We now have the same patte
 - Renaming the target to X reduces bias
 
 **Visual**:
-- **Thesis Figure 4.3** on one side
-- **Thesis Figure 4.4** on the other
+- **Thesis Figure 4.4** (naming bias) as main visual
+- **Thesis Figure 4.3** (VRP) as smaller inset if space allows
+- **Note**: If space tight, Fig. 4.4 is more memorable to live audience
 
 **Speaker Notes** (90 seconds):
 "I found two more very specific failure modes. First, even multimodal models could recognize scene elements but still fail to integrate them into a valid construction plan. The Visual Relations Prompt fixes that by turning the image into explicit relations in language. Second, alphabetical naming created a bias: target labels like C, D, or E could distort the reasoning path. Replacing the target with X often restored shorter, cleaner solutions."
@@ -385,19 +389,21 @@ This also serves as the cross-domain synthesis point. We now have the same patte
 
 ---
 
-#### Slide 18: Geometry Chapter — Results and Broader Implications
+#### Slide 18: What the Geometry Chapter Taught Me
 
 **On Slide**:
 - Multi-agent structure beats single prompting
 - Role and domain specialization matter
 - VRP and feedback loops help further
-- The framework transfers beyond geometry
+- The framework transfers beyond geometry (if generalization table included)
 
 **Visual**:
 - **EMNLP Table 1 cropped** to:
   - MetaMath-Mistral
   - ChatGPT
   - GPT-4
+- **To support "transfers beyond geometry" claim**: Add tiny footer callout or backup inset from generalization results table (GSM8K, SVAMP, MATH transfer)
+- **Alternative**: Keep claim in speaker notes only, not on-slide bullets
 - Optional small side callouts from:
   - Table 3 for role/domain ablation
   - Table 4 for VRP
@@ -426,11 +432,11 @@ This serves as the implicit synthesis for the geometry chapter: structure matter
 **On Slide**:
 - Measure reasoning behaviorally
 - Expose shortcut dependence semantically
-- Improve reasoning with structure
+- Improve reasoning through structure
 - Future directions:
-  - post-training
-  - agent collaboration
-  - continual learning
+  - Adversarial testing + pretraining/post-training
+  - Collaborative multi-agent frameworks
+  - Continual learning
 
 **Visual**:
 - No borrowed figure needed
@@ -448,19 +454,26 @@ This serves as the implicit synthesis for the geometry chapter: structure matter
 
 #### Slide 20: Recent Developments Reinforcing These Contributions
 
-**On Slide**:
-- AI reasoning agents
-- Vision-language reasoning
-- Internal deliberation / thought processes
-- The thesis themes anticipated a broader shift in the field
+**On Slide** (Use Chapter 5.1 headings verbatim):
+- **AI Reasoning Agents**
+- **Vision-Language Model Reasoning**
+- **Virtual Tokens for Thought Processes**
 
 **Visual**:
-- Clean 3-box or 4-box slide
-- Since Chapter 5.1 is conceptual, text is enough
-- Optional: a few current logos or screenshots (GPT-4o, Gemini, o1, etc.)
+- Clean 3-box slide with these three headings
+- Text-only is sufficient (thesis-faithful)
+- Keep examples in speaker notes, not on-slide
 
 **Speaker Notes** (90 seconds):
-"I would end with the thesis's own final point: the directions explored here — stronger reasoning agents, better vision-language reasoning, and more explicit internal deliberation — did not remain marginal. They became increasingly central. Reinforcement-learning-based reasoning is central in OpenAI's o1. Unified multimodality is now native in systems like GPT-4o and Gemini. Multi-agent orchestration is no longer speculative: Anthropic and OpenAI now ship production tooling for agent workflows. So this dissertation was not three disconnected papers. It was an early research program around how to test reasoning more honestly and how to push it further once we find its limits."
+"I would end with the thesis's own final point from Chapter 5.1: the directions explored here did not remain marginal. They became increasingly central.
+
+For AI Reasoning Agents: Multi-agent orchestration is no longer speculative. Anthropic and OpenAI now ship production tooling for agent workflows.
+
+For Vision-Language Model Reasoning: Unified multimodality is now native in systems like GPT-4o and Gemini. The VRP work anticipated this integration.
+
+For Virtual Tokens for Thought Processes: Reinforcement-learning-based reasoning is central in OpenAI's o1, where models spend more time 'thinking.' DeepMind's work on world models like Genie 3 explores similar directions.
+
+So this dissertation was not three disconnected papers. It was an early research program around how to test reasoning more honestly and how to push it further once we find its limits."
 
 **Source**: Thesis Chapter 5.1
 
@@ -479,12 +492,20 @@ This serves as the implicit synthesis for the geometry chapter: structure matter
 8. **Slide 10**: Thesis Fig. 3.1 or ACL Fig. 1 (Blocks of Influence)
 9. **Slide 11**: ACL Table 3 **cropped** (3 models, key transformations)
 10. **Slide 12**: Thesis Fig. 3.2 + optional 3.3/3.4 (Qualitative code failures)
-11. **Slide 13**: ACL Tables 4 and 5 **cropped** side-by-side
+11. **Slide 13**: ACL Table 4 **cropped** (main mitigation table)
+    - **Warning**: Two tables side-by-side may be too dense for defense room
+    - **Recommendation**: Keep one main table on-slide, move second to backup or mention verbally
+    - Code chapter already has strong qualitative slide, so readability > squeezing both tables
 12. **Slide 14**: Euclidea problem screenshot (clean starting state)
-13. **Slide 15**: Thesis Fig. 4.2 (Baseline ablations)
-14. **Slide 16**: Thesis Fig. 4.1 (Multi-agent architecture)
-15. **Slide 17**: Thesis Figs. 4.3 and 4.4 (VRP + naming bias)
-16. **Slide 18**: EMNLP Table 1 **cropped** + mini callouts from Tables 3-5
+    - **NOT Thesis Fig. 4.1** - that is multi-agent architecture, used on Slide 16
+    - Crop from EMNLP paper appendix or thesis Chapter 4 opening
+13. **Slide 15**: Thesis Fig. 4.2 (Adaptive prompting / few-shot baselines)
+14. **Slide 16**: Thesis Fig. 4.1 (Multi-agent overview architecture)
+15. **Slide 17**: Thesis Fig. 4.4 (naming bias) main + Fig. 4.3 (VRP) inset
+    - If space tight, Fig. 4.4 is more memorable to live audience
+16. **Slide 18**: EMNLP Table 1 **cropped** + optional generalization table footer
+    - To support "transfers beyond geometry" claim on-slide
+    - Or keep transfer claim in speaker notes only
 
 ### Best Backup Slides:
 - White-box vs black-box testing from Chapter 1
