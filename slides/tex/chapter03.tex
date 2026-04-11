@@ -1,5 +1,83 @@
-\section{Related work}
+\section{Exposing and Mitigating Biases in Code Generation}
 
-\begin{frame}{Chapter 3 — Related work}
-  Summarise the literature and how you position your thesis.
+% Slide 9: Exposing and Mitigating Biases in Code Generation
+\begin{frame}{Exposing and Mitigating Biases in Code Generation}
+  \begin{itemize}
+    \item Same question, new modality
+    \item In code, shortcuts live inside the prompt
+    \item Function names, keywords, and examples can leak the solution
+    \item So I test prompt semantics the way I tested scene semantics
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{assets/code-prompt-example}
+  \end{center}
+  \note{Chapter 3 is the language-domain continuation of the same idea. In vision, the shortcut can live in the scene. In code generation, the shortcut often lives in the prompt itself. Function names, task wording, and examples can all act as hidden hints. So I apply the same black-box semantic testing logic, but now to structured prompts instead of structured scenes.}
+\end{frame}
+
+% Slide 10: Blocks of Influence
+\begin{frame}{Blocks of Influence}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Name Block $\rightarrow$ memorization
+      \item Description Block $\rightarrow$ lexical cue dependence
+      \item Example Block $\rightarrow$ reasoning tie-breaker
+      \item Perturb the blocks while preserving global task meaning
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{assets/thesis-fig-3-1-blocks-of-influence}
+  \end{columns}
+  \note{This is the central abstraction of the code paper. I decompose the prompt into three Blocks of Influence. If renaming the function breaks performance, that suggests memorization. If removing a few keywords breaks it, that suggests lexical dependence. If removing examples breaks it, then the examples were doing reasoning work for the model. The important point is the task remains human-solvable after these transformations.}
+\end{frame}
+
+% Slide 11: Code Chapter — What Breaks When Hints Disappear
+\begin{frame}{Code Chapter: What Breaks When Hints Disappear}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Anonymization exposes memorization
+      \item Keyword removal exposes prompt bias
+      \item Example removal exposes weak composition
+      \item Combined transformations are the most damaging
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{assets/acl-table-3-cropped}
+  \end{columns}
+  \note{The pattern is the same as in vision. Small semantic interventions can produce large drops. If I remove function-name hints, I expose memorization. If I remove selected keywords, I expose lexical bias. If I remove examples, I expose shallow compositional reasoning. And when I combine those transformations, the drops become much larger — around 40 percent in the hardest setting.}
+\end{frame}
+
+% Slide 12: Code Chapter — Qualitative Examples of Shallow Reasoning
+\begin{frame}{Code Chapter: Qualitative Examples of Shallow Reasoning}
+  \begin{itemize}
+    \item Models often retain fragments of the right idea
+    \item What fails is composition
+    \item The output looks plausible
+    \item But the logic is wrong
+  \end{itemize}
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{assets/thesis-fig-3-2-code-failures}
+  \end{center}
+  \note{These qualitative examples are very revealing. The model still produces code that looks intelligent and relevant. It may still compare numbers, iterate, or use the right operators. But it fails to compose those pieces into the correct algorithm. So the failure is not total ignorance. It is shallow reasoning hidden behind plausible code.}
+\end{frame}
+
+% Slide 13: What Helped in Code Generation
+\begin{frame}{What Helped in Code Generation}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Adversarial fine-tuning partially improves robustness
+      \item Longer, richer descriptions help some models
+      \item Larger models benefit more
+      \item But the deeper bias remains
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    % Option 1: Show both tables side by side (may be dense)
+    \includegraphics[width=\textwidth]{assets/acl-tables-4-5-cropped}
+    % Option 2: Show only Table 5 (fine-tuning results), reference Table 4 in notes
+    % \includegraphics[width=\textwidth]{assets/acl-table-5-cropped}
+  \end{columns}
+  \note{I did not want this chapter to end only with diagnosis. So I used the perturbations as training augmentations. That helped, especially for larger models, and longer descriptions also improved resilience in some cases. But the gains were partial. The main conclusion stayed the same: data augmentation helps, but it does not fully remove the underlying shortcut dependence. This also serves as the cross-domain synthesis point. We now have the same pattern appearing in two completely different modalities. In vision, the shortcuts were spatial and configurational. In code, they are lexical and structural. But the underlying pathology is identical: models retreat to the easiest available signal when reasoning becomes hard.}
 \end{frame}
