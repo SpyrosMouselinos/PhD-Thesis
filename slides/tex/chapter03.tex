@@ -35,23 +35,37 @@
   \note{This is the central abstraction of the code paper. I decompose the prompt into three Blocks of Influence. If renaming the function breaks performance, that suggests memorization. If removing a few keywords breaks it, that suggests lexical dependence. If removing examples breaks it, then the examples were doing reasoning work for the model. The important point is the task remains human-solvable after these transformations.}
 \end{frame}
 
-% Slide 12: Code Chapter — What Breaks When Hints Disappear
-\begin{frame}{Code Chapter: What Breaks When Hints Disappear}
-  \begin{columns}
-    \column{0.5\textwidth}
-    \begin{itemize}
-      \item Anonymization exposes memorization
-      \item Keyword removal exposes prompt bias
-      \item Example removal exposes weak composition
-      \item Combined transformations are the most damaging
-    \end{itemize}
+% Slide 12: Hero Slide — Remove the hints, lose the reasoning
+\begin{frame}{Remove the hints, lose the reasoning}
+  \begin{columns}[T]
+    \column{0.31\textwidth}
+    \begin{beamercolorbox}[wd=\linewidth,sep=1em,center]{block body}
+      {\Large Anonymization}\\[1em]
+      {\Huge \textbf{$\sim$19\%}}\\[0.5em]
+      {\large drop}
+    \end{beamercolorbox}
 
-    \column{0.5\textwidth}
-    \includegraphics[width=\textwidth]{assets/acl-table-3-tight}
-    \vspace{-0.3em}
-    {\tiny Source: ACL 2023 Table 3 (3 models, key transformations)}
+    \column{0.31\textwidth}
+    \begin{beamercolorbox}[wd=\linewidth,sep=1em,center]{block body}
+      {\Large Drop Keywords}\\[1em]
+      {\Huge \textbf{$\sim$22\%}}\\[0.5em]
+      {\large drop}
+    \end{beamercolorbox}
+
+    \column{0.31\textwidth}
+    \begin{beamercolorbox}[wd=\linewidth,sep=1em,center]{block body}
+      {\Large Combined}\\[1em]
+      {\Huge \textbf{$\sim$40\%}}\\[0.5em]
+      {\large drop}
+    \end{beamercolorbox}
   \end{columns}
-  \note{The pattern is the same as in vision. Small semantic interventions can produce large drops. If I remove function-name hints, I expose memorization. If I remove selected keywords, I expose lexical bias. If I remove examples, I expose shallow compositional reasoning. And when I combine those transformations, the drops become much larger — around 40 percent in the hardest setting.}
+
+  \vspace{2em}
+  \begin{center}
+    {\Large The model was using the shortcuts, not solving the problem}
+  \end{center}
+
+  \note{This is the punch line of the code chapter. When I remove function-name hints via anonymization, performance drops by about 19 percent. When I remove selected keywords, it drops by about 22 percent. And when I combine those transformations, the drop reaches around 40 percent. The model was not reasoning from first principles. It was leaning on lexical and structural cues embedded in the prompt. Remove the scaffolding, and the reasoning collapses.}
 \end{frame}
 
 % Slide 13: Code Failures
