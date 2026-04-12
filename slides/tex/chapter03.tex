@@ -1,12 +1,12 @@
 \section{Exposing and Mitigating Biases in Code Generation}
 
-% Slide 10: Exposing and Mitigating Biases in Code Generation
-\begin{frame}{Exposing and Mitigating Biases in Code Generation}
+% Slide 10: Code Opener
+\begin{frame}{In code, the shortcuts live in the prompt}
   \begin{itemize}
-    \item Same question, new modality
-    \item In code, shortcuts live inside the prompt
-    \item Function names, keywords, and examples can leak the solution
-    \item So I test prompt semantics the way I tested scene semantics
+    \item Function names leak the solution
+    \item Keywords act as hidden hints
+    \item Examples do the reasoning for the model
+    \item Question: Is the model solving, or pattern-matching?
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.8\textwidth,height=0.5\textheight,keepaspectratio]{assets/code-prompt-example}
@@ -17,7 +17,7 @@
 \end{frame}
 
 % Slide 11: Blocks of Influence
-\begin{frame}{Blocks of Influence}
+\begin{frame}{Three blocks, three biases}
   \begin{columns}
     \column{0.48\textwidth}
     \begin{itemize}
@@ -54,13 +54,12 @@
   \note{The pattern is the same as in vision. Small semantic interventions can produce large drops. If I remove function-name hints, I expose memorization. If I remove selected keywords, I expose lexical bias. If I remove examples, I expose shallow compositional reasoning. And when I combine those transformations, the drops become much larger — around 40 percent in the hardest setting.}
 \end{frame}
 
-% Slide 12: Code Chapter — Qualitative Examples of Shallow Reasoning
-\begin{frame}{Code Chapter: Qualitative Examples of Shallow Reasoning}
+% Slide 13: Code Failures
+\begin{frame}{Plausible code $\neq$ correct reasoning}
   \begin{itemize}
     \item Models often retain fragments of the right idea
     \item What fails is composition
-    \item The output looks plausible
-    \item But the logic is wrong
+    \item Still uses right operators, still looks intelligent, but logic is wrong
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.85\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-3-2-code-single-example}
@@ -70,24 +69,22 @@
   \note{These qualitative examples are very revealing. The model still produces code that looks intelligent and relevant. It may still compare numbers, iterate, or use the right operators. But it fails to compose those pieces into the correct algorithm. So the failure is not total ignorance. It is shallow reasoning hidden behind plausible code.}
 \end{frame}
 
-% Slide 13: What Helped in Code Generation
-\begin{frame}{What Helped in Code Generation}
+% Slide 14: Mitigation
+\begin{frame}{Mitigation helps, but the bias remains}
   \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
       \item Adversarial fine-tuning partially improves robustness
       \item Longer, richer descriptions help some models
       \item Larger models benefit more
-      \item But the deeper bias remains
+      \item Bottom line: Partial improvement, not full solution
     \end{itemize}
 
     \column{0.5\textwidth}
-    % Option 1: Show both tables side by side (may be dense)
-    \includegraphics[width=\textwidth]{assets/acl-tables-4-5-cropped}
+    % Show only Table 5 (fine-tuning results), more focused
+    \includegraphics[width=\textwidth]{assets/acl-table-5-cropped}
     \vspace{-0.3em}
-    {\tiny Source: ACL 2023 Tables 4-5 (mitigation results)}
-    % Option 2: Show only Table 5 (fine-tuning results), reference Table 4 in notes
-    % \includegraphics[width=\textwidth]{assets/acl-table-5-cropped}
+    {\tiny Source: ACL 2023 Table 5 (fine-tuning results)}
   \end{columns}
   \note{I did not want this chapter to end only with diagnosis. So I used the perturbations as training augmentations. That helped, especially for larger models, and longer descriptions also improved resilience in some cases. But the gains were partial. The main conclusion stayed the same: data augmentation helps, but it does not fully remove the underlying shortcut dependence. This also serves as the cross-domain synthesis point. We now have the same pattern appearing in two completely different modalities. In vision, the shortcuts were spatial and configurational. In code, they are lexical and structural. But the underlying pathology is identical: models retreat to the easiest available signal when reasoning becomes hard.}
 \end{frame}
