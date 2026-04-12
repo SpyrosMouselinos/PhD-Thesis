@@ -1,10 +1,11 @@
 \section{Testing Reasoning in the Visual Domain}
 
 % Slide 5: Testing Reasoning in the Visual Domain
-\begin{frame}{Testing Reasoning in the Visual Domain}
+\begin{frame}{CLEVR looked solved. It wasn't.}
   \begin{columns}
     \column{0.48\textwidth}
     \begin{itemize}
+      \item Models reached 99%+ accuracy
       \item Visual question answering as a proxy for reasoning
       \item CLEVR reduced many trivial dataset biases
       \item CLEVR looked close to solved
@@ -55,7 +56,7 @@
 \end{frame}
 
 % Slide 8: Visual Chapter — Qualitative Failures
-\begin{frame}{Visual Chapter: Qualitative Failures}
+\begin{frame}{Small changes. Big failures.}
   \begin{itemize}
     \item Changes are small
     \item Changes are valid
@@ -63,20 +64,19 @@
     \item Yet the model flips its answer
   \end{itemize}
   \begin{center}
-    \includegraphics[width=0.7\textwidth,height=0.6\textheight,keepaspectratio]{assets/thesis-fig-2-2-visual-failures-tight}
+    \includegraphics[width=0.85\textwidth,height=0.65\textheight,keepaspectratio]{assets/thesis-fig-2-2-visual-failures-tight}
     \vspace{-0.3em}
     {\tiny Source: Thesis Fig. 2.2 (tightly cropped for readability)}
   \end{center}
   \note{This is where the result becomes intuitive. The manipulations are not bizarre. They are small and semantically harmless. A human typically sees no reason the answer should change, but the model changes it anyway. In some cases, perception still looks fine, which suggests the failure is not only visual recognition. It is also a reasoning failure over the recognized content.}
 \end{frame}
 
-% Slide 8: What the Visual Chapter Taught Me
-\begin{frame}{What the Visual Chapter Taught Me}
+% Slide 9: What the Visual Chapter Proved
+\begin{frame}{What the visual chapter proved}
   \begin{itemize}
-    \item High accuracy is not enough
-    \item Brute-force retraining helps only marginally
-    \item Reasoning difficulty matters more than raw scene variation
-    \item This motivates transferring the same test philosophy to language
+    \item High accuracy $\neq$ robust reasoning
+    \item Benchmark success hides brittleness
+    \item Semantic stress-testing reveals real capabilities
   \end{itemize}
   \note{The visual chapter gave me the first thesis-level lesson: benchmark success is not proof of reasoning. It also showed that just adding more adversarially manipulated data is not a full solution. That led directly to the next question: if this pathology is real, does it also appear in language-based reasoning tasks like code generation?}
 \end{frame}
