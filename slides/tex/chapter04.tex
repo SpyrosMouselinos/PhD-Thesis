@@ -80,18 +80,63 @@
   \note{I found two more very specific failure modes. First, even multimodal models could recognize scene elements but still fail to integrate them into a valid construction plan. The Visual Relations Prompt fixes that by turning the image into explicit relations in language. Second, alphabetical naming created a bias: target labels like C, D, or E could distort the reasoning path. Replacing the target with X often restored shorter, cleaner solutions.}
 \end{frame}
 
-% Slide 20: What the Geometry Chapter Taught Me
-\begin{frame}{What the Geometry Chapter Taught Me}
-  \begin{itemize}
-    \item Multi-agent structure beats single prompting
-    \item Role and domain specialization matter
-    \item VRP and feedback loops help further
-    \item The framework transfers beyond geometry
-  \end{itemize}
+% Slide 20: Hero slide — Better reasoning through better organization
+\begin{frame}{Better reasoning through better organization}
+  \vspace{-0.5em}
   \begin{center}
-    \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/emnlp-table-1-cropped}
-    \vspace{-0.3em}
-    {\tiny Source: EMNLP 2024 Table 1 (Euclidea results and transfer)}
+    % Three big boxes showing model improvements
+    \begin{columns}[T]
+      \column{0.33\textwidth}
+      \centering
+      \fcolorbox{blue!60!black}{blue!10}{%
+        \begin{minipage}{0.9\textwidth}
+          \centering
+          \vspace{0.3em}
+          {\Large \textbf{MetaMath}}\\[0.3em]
+          {\huge 8.9 → 14.9}\\[0.2em]
+          {\LARGE \textcolor{blue!70!black}{+67\%}}
+          \vspace{0.3em}
+        \end{minipage}
+      }
+
+      \column{0.33\textwidth}
+      \centering
+      \fcolorbox{green!60!black}{green!10}{%
+        \begin{minipage}{0.9\textwidth}
+          \centering
+          \vspace{0.3em}
+          {\Large \textbf{ChatGPT}}\\[0.3em]
+          {\huge 11.7 → 32.3}\\[0.2em]
+          {\LARGE \textcolor{green!60!black}{+176\%}}
+          \vspace{0.3em}
+        \end{minipage}
+      }
+
+      \column{0.33\textwidth}
+      \centering
+      \fcolorbox{red!60!black}{red!10}{%
+        \begin{minipage}{0.9\textwidth}
+          \centering
+          \vspace{0.3em}
+          {\Large \textbf{GPT-4}}\\[0.3em]
+          {\huge 21.2 → 38.9}\\[0.2em]
+          {\LARGE \textcolor{red!70!black}{+83\%}}
+          \vspace{0.3em}
+        \end{minipage}
+      }
+    \end{columns}
+
+    \vspace{1.5em}
+
+    % Ablation trend
+    {\large Ablation trend (ChatGPT): 13.6 → 22.2 → 28.1}\\
+    {\footnotesize (Alpha/Beta levels only)}
+
+    \vspace{1.5em}
+
+    % Bottom line
+    {\Huge \textbf{Structure matters as much as scale}}
   \end{center}
-  \note{This slide is the culmination of the thesis. The gains are large, and the ablations explain why: domain separation, validators, VRP, and naming neutralization all contribute. Importantly, the framework is not just a geometry trick. By swapping tools, it also transfers to GSM8K, SVAMP, and MATH-style reasoning tasks. The broader lesson is that structure and collaboration can extend the reasoning limits of general-purpose models. This serves as the explicit synthesis for the geometry chapter: structure matters as much as scale, and multi-agent specialization is a constructive answer to the limitations exposed in the earlier chapters. The claim that it 'transfers beyond geometry' is supported by the generalization results table showing performance on algebraic reasoning tasks.}
+
+  \note{This is the hero slide for the geometry chapter. The multi-agent approach delivers massive improvements across all tested models: MetaMath gains 67\%, ChatGPT gains 176\%, and GPT-4 gains 83\%. These are not marginal gains — they show that organizational structure can unlock reasoning capacity that already exists in the model. The ablation trend (13.6 → 22.2 → 28.1) shows incremental gains as we add agents, validators, and refinement loops. The bottom line is the thesis contribution: structure matters as much as scale. Multi-agent specialization is a constructive answer to the limitations exposed in earlier chapters.}
 \end{frame}
