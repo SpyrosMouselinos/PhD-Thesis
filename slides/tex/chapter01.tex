@@ -7,22 +7,25 @@
     \item Strong benchmark results do not guarantee reasoning
     \item Small, human-irrelevant changes can still break the system
   \end{itemize}
+  \vspace{-0.3em}
   \begin{center}
-    \includegraphics[width=0.65\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-1-1-clever-hans}
+    \includegraphics[width=0.85\textwidth,height=0.6\textheight,keepaspectratio]{assets/thesis-fig-1-1-clever-hans}
   \end{center}
+  \vspace{-0.5em}
+  {\tiny Source: Thesis Fig. 1.1}
   \note{I open with Clever Hans because it is the right metaphor for the entire thesis. Hans looked intelligent, but the performance came from sensitivity to cues, not real understanding. My claim is that many modern AI systems have the same issue: they can look extremely capable in well-structured benchmarks, but fail under subtle changes that should not matter to a human observer.}
 \end{frame}
 
 % Slide 4: Central Research Question and How This Thesis Tests It
 \begin{frame}{Central Research Question and How This Thesis Tests It}
   \begin{block}{Research Question}
-    \small{How can AI systems progress beyond pattern recognition to cultivate strong reasoning capabilities across multiple domains?}
+    \small{How can AI systems progress beyond pattern recognition to cultivate strong reasoning capabilities across multiple domains with diverse contexts and modalities?}
   \end{block}
 
-  \vspace{0.5em}
+  \vspace{0.3em}
 
   \begin{columns}[T]
-    \column{0.50\textwidth}
+    \column{0.48\textwidth}
     \textbf{Methodology:}
     \begin{itemize}
       \item Behavioral evaluation
@@ -31,8 +34,10 @@
       \item Roadmap: vision $\rightarrow$ code $\rightarrow$ geometry
     \end{itemize}
 
-    \column{0.50\textwidth}
-    \includegraphics[width=\textwidth]{assets/thesis-fig-1-8-adversarial-testing}
+    \column{0.52\textwidth}
+    \includegraphics[width=\textwidth,height=0.55\textheight,keepaspectratio]{assets/thesis-fig-1-8-adversarial-testing}
+    \vspace{-0.3em}
+    {\tiny Source: Thesis Fig. 1.8}
   \end{columns}
   \note{This is the central research question of the dissertation. The methodological core of my answer is behavioral testing. Instead of asking only whether a model gets the benchmark answer right, I ask whether it stays right under semantically meaningful changes. I focus on black-box settings because those are realistic for modern systems, especially closed ones. So the thesis tries to combine the realism of black-box testing with the diagnostic strength usually associated with white-box methods.}
 \end{frame}
