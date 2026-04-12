@@ -1,18 +1,15 @@
 \section{Vision meets Language in Geometric Agentic Reasoning}
 
-% Slide 14: Vision meets Language in Geometric Agentic Reasoning
-\begin{frame}{Vision meets Language in Geometric Agentic Reasoning}
+% Slide 15: Geometry is where everything collides
+\begin{frame}{Geometry is where everything collides}
   \begin{columns}[T]
     \column{0.48\textwidth}
-    \textbf{Geometry combines:}
     \begin{itemize}
-      \item Vision
-      \item Language
-      \item Planning
-      \item Tool use
+      \item Vision + Language + Planning + Tool use
+      \item Algebraic reasoning alone is not enough
+      \item Spatial relationships require true understanding
+      \item The hardest setting — where all earlier problems converge
     \end{itemize}
-    \vspace{1em}
-    \small{\textit{The hardest setting — where all earlier problems converge}}
 
     \column{0.52\textwidth}
     \centering
@@ -23,13 +20,14 @@
   \note{Geometry is the culmination of the dissertation. It is not just another benchmark. It combines visual understanding, symbolic reasoning, sequential planning, and tool use in one open-ended task. Models that look strong in algebra or text often struggle here, because constructive geometry is a much stricter test of reasoning.}
 \end{frame}
 
-% Slide 15: Why Single-Model Prompting Is Not Enough
-\begin{frame}{Why Single-Model Prompting Is Not Enough}
+% Slide 17: Single-model prompting: not enough
+\begin{frame}{Single-model prompting: not enough}
   \begin{itemize}
     \item Zero-shot hallucinated tools
     \item Static few-shot copied styles and steps
     \item Adaptive few-shot selected better prior problems
     \item Geometry made planning failures very visible
+    \item \textbf{ChatGPT: 5.9 → 13.6 with best prompting}
   \end{itemize}
   \begin{center}
     \includegraphics[width=0.7\textwidth,height=0.5\textheight,keepaspectratio]{assets/thesis-fig-4-2-baselines}
@@ -39,8 +37,8 @@
   \note{I first studied what goes wrong before building the full system. Zero-shot prompting often hallucinated tool behavior. Static few-shot reduced that, but it introduced another problem: the model copied the style and even the reasoning path of the prompt examples. Adaptive few-shot helped by retrieving more relevant demonstrations. In the ablations, ChatGPT improves from 5.9 zero-shot to 13.6 with Adaptive-Shot Self on Alpha and Beta levels.}
 \end{frame}
 
-% Slide 16: From Single Models to Agent Teamwork
-\begin{frame}{From Single Models to Agent Teamwork}
+% Slide 18: From monologue to teamwork
+\begin{frame}{From monologue to teamwork}
   \begin{itemize}
     \item Natural-language solver plans
     \item Geometry-tool solver executes
@@ -48,15 +46,15 @@
     \item Specialization separates reasoning from action
   \end{itemize}
   \begin{center}
-    \includegraphics[height=0.55\textheight,keepaspectratio]{assets/thesis-fig-4-1-multi-agent-arch}
+    \includegraphics[height=0.7\textheight,keepaspectratio]{assets/thesis-fig-4-1-multi-agent-arch}
     \vspace{-0.3em}
     {\tiny Source: Thesis Fig. 4.1 (multi-agent architecture)}
   \end{center}
   \note{This is the conceptual heart of the geometry chapter. I stop treating the model as one monolithic reasoner and instead organize the reasoning process. One agent plans in natural language, another translates that plan into geometric tool steps, and validators criticize both levels. The key idea is that reasoning improves when we structure it — not only when we scale the model.}
 \end{frame}
 
-% Slide 17: Spatial Grounding and Naming Biases
-\begin{frame}{Spatial Grounding and Naming Biases}
+% Slide 19: Two more failure modes: grounding and naming
+\begin{frame}{Two more failure modes: grounding and naming}
   \begin{columns}
     \column{0.5\textwidth}
     \begin{itemize}
