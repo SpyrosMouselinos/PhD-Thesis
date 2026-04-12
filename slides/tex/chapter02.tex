@@ -36,23 +36,55 @@
   \note{The setup is a zero-sum game. One player is the model under test. The other is an adversarial scene manipulator. Crucially, the manipulator does not get gradients or model internals. It only changes the scene in ways that remain valid for the same question and answer. So this is not a pixel attack. It is a semantic black-box test of whether the model's reasoning is invariant under equivalent scene reconfigurations.}
 \end{frame}
 
-% Slide 7: Visual Chapter — Benchmark Success Is Not Robust Reasoning
-\begin{frame}{Visual Chapter: Benchmark Success Is Not Robust Reasoning}
-  \begin{columns}
-    \column{0.48\textwidth}
-    \begin{itemize}
-      \item Strong CLEVR models still broke
-      \item The drops were often large
-      \item Harder questions were more fragile
-      \item Especially counting / existence / relational cases
-    \end{itemize}
+% Slide 7: Hero Slide — 99% accuracy. Still brittle.
+\begin{frame}{99\% accuracy. Still brittle.}
+  \begin{columns}[t]
+    \column{0.23\textwidth}
+    \begin{block}{FiLM}
+      \centering
+      \Large 96.2 \textrightarrow{} 48.0
+      \normalsize
+      \vspace{0.5em}
 
-    \column{0.52\textwidth}
-    \includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{assets/iclr-table-2-cropped}
-    \vspace{-0.3em}
-    {\tiny Source: ICLR 2022 Table 2 (cropped)}
+      (50\% drop)
+    \end{block}
+
+    \column{0.23\textwidth}
+    \begin{block}{RN}
+      \centering
+      \Large 93.2 \textrightarrow{} 47.0
+      \normalsize
+      \vspace{0.5em}
+
+      (50\% drop)
+    \end{block}
+
+    \column{0.23\textwidth}
+    \begin{block}{TbD}
+      \centering
+      \Large 99.1 \textrightarrow{} 69.0
+      \normalsize
+      \vspace{0.5em}
+
+      (30\% drop)
+    \end{block}
+
+    \column{0.23\textwidth}
+    \begin{block}{MDetr}
+      \centering
+      \Large 99.7 \textrightarrow{} 60.0
+      \normalsize
+      \vspace{0.5em}
+
+      (40\% drop)
+    \end{block}
   \end{columns}
-  \note{This is the quantitative punchline. Models that looked almost solved on CLEVR collapsed badly by small, semantically valid changes. FiLM drops from 96.2 to 48.0, RN from 93.2 to 47.0, and even MDetr, which was nearly perfect originally, drops to 60.0 in the hardest cases. The main point is simple: strong benchmark accuracy did not imply robust reasoning.}
+
+  \vspace{1em}
+  \centering
+  \textit{Near-perfect benchmark scores collapse under semantic perturbations}
+
+  \note{These are state-of-the-art models that looked solved on CLEVR. FiLM drops from 96.2 to 48.0. RN from 93.2 to 47.0. Even MDetr at 99.7 drops to 60.0. Our black-box semantic manipulations reveal brittleness hidden by benchmark accuracy.}
 \end{frame}
 
 % Slide 8: Visual Chapter — Qualitative Failures
